@@ -1,0 +1,42 @@
+# Environnement Python
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Outils de developpement
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Secrets et variables d'environnement
+.env
+.env.*
+!.env.example
+
+# Donnees generees
+data/raw/*
+data/bronze/*
+data/silver/*
+data/gold/*
+data/samples/*
+
+# Modeles et fichiers temporaires
+*.joblib
+*.pkl
+*.parquet
+*.log
+
+# Systeme
+.DS_Store
+Thumbs.db
+!data/raw/.gitkeep 
+!data/bronze/.gitkeep 
+!data/silver/.gitkeep 
+!data/gold/.gitkeep 
+!data/samples/.gitkeep

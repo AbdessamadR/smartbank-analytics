@@ -1,0 +1,20 @@
+# Data Processing
+numpy==2.5.4
+pandas==3.1.1
+pyarrow==26.0.1
+
+# Machine Learning
+scikit-learn==1.9.1
+imbalanced-learn==0.14.2
+
+# API
+fastapi==0.162.5
+uvicorn==0.54.0
+pydantic==2.14.3
+
+# Database
+sqlalchemy==2.0.57
+psycopg[binary]==3.3.9
+
+# Kafka Streaming
+confluent-kafka==2.16.1

@@ -1,0 +1,3 @@
+[submodule "external/AMLSim"]
+	path = external/AMLSim
+	url = https://github.com/IBM/AMLSim.git

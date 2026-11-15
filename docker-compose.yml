@@ -1,0 +1,32 @@
+services:
+  spark-master:
+    image: smartbank-spark-delta:4.2.0-4.4.1
+    container_name: smartbank-spark-master
+    hostname: spark-master
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
+    environment:
+      SPARK_MASTER_HOST: spark-master
+      SPARK_MASTER_PORT: 7077
+      SPARK_MASTER_WEBUI_PORT: 8080
+    ports:
+      - "7077:7077"
+      - "8081:8080"
+    volumes:
+      - ./data/lakehouse:/opt/spark/data/lakehouse
+      - ./src:/opt/spark/work-dir/src
+    restart: unless-stopped
+
+  spark-worker:
+    image: smartbank-spark-delta:4.2.0-4.4.1
+    container_name: smartbank-spark-worker
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
+    depends_on:
+      - spark-master
+    environment:
+      SPARK_WORKER_CORES: 2
+      SPARK_WORKER_MEMORY: 2g
+    volumes:
+      - ./:/workspace
+      - ./data/lakehouse:/opt/spark/data/lakehouse
+      - ./src:/opt/spark/work-dir/src
+    restart: unless-stopped
